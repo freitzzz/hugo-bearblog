@@ -3,6 +3,6 @@
   your local /layouts/partials-directory -->
 
 
-{{ if .Site.Params.nolytics.enabled }}
+{{ if and .Site.Params.nolytics.enabled hugo.IsProduction }}
 <img src="{{ .Site.Params.nolytics.worker_url }}?path={{ .RelPermalink }}&name={{ .Title }}" alt="">
 {{ end }}
