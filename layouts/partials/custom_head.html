@@ -1,3 +1,11 @@
 <!-- A partial to be overwritten by the user.
   Simply place a custom_head.html into
   your local /layouts/partials-directory -->
+
+{{ if .Site.Params.theme.enabled }}
+<style>
+  a {
+    color: {{ .Site.Params.theme.link_color }};
+  }
+</style>
+{{ end }}
