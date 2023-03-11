@@ -4,6 +4,7 @@ baseURL = "https://example.com"
 
 # The name of this wonderful theme ;-).
 theme = 'hugo-bearblog'
+themesDir = '../..'
 
 # Basic metadata configuration for your blog.
 title = "Hugo ʕ•ᴥ•ʔ Bear Blog"
@@ -54,3 +55,6 @@ ignoreErrors = ["error-disable-taxonomy"]
   [params.nolytics]
     enabled = false
     worker_url = "https://<worker.url>"
+  [params.theme]
+    enabled = false
+    link_color = "#FF0000"
