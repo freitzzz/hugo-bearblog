@@ -1,7 +1,26 @@
 <a href="{{ "/" | relURL }}">Home</a>
-{{ range .Site.Menus.main }}
-<a href="{{ .URL }}">{{ .Name }}</a>
-{{ end }}
-{{ with .Site.GetPage "/blog" }}
-<a href="{{ "/blog" | relURL }}">Blog</a>
+{{ if .Site.Params.nav.enabled }}
+    {{ if eq .Site.Params.nav.order "strict" }}
+        {{ range .Site.Params.nav.menu }}
+            <a href="/{{ . }}">{{ title . }}</a>
+        {{ end }}
+    {{ else }}
+        {{ $menus := .Site.Menus.main.Sort }}
+        {{ if eq .Site.Params.nav.order "desc" }}
+            {{ $menus = $menus.Reverse }}
+        {{ end }}
+        {{ range $menus }}
+            <a href="{{ .URL }}">{{ .Name }}</a>
+        {{ end }}    
+        {{ with .Site.GetPage "/blog" }}
+            <a href="{{ "/blog" | relURL }}">Blog</a>
+        {{ end }}
+    {{ end }}
+{{ else }}
+    {{ range .Site.Menus.main }}
+        <a href="{{ .URL }}">{{ .Name }}</a>
+    {{ end }}    
+    {{ with .Site.GetPage "/blog" }}
+        <a href="{{ "/blog" | relURL }}">Blog</a>
+    {{ end }}
 {{ end }}
