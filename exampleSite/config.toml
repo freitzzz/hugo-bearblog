@@ -52,6 +52,10 @@ ignoreErrors = ["error-disable-taxonomy"]
   # 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
   # dateFormat = "2006-01-02"
 
+  [params.nav]
+    enabled = false
+    order = "asc|desc|strict"
+    menu = ["blog", "art", "videos"]
   [params.nolytics]
     enabled = false
     worker_url = "https://<worker.url>"
