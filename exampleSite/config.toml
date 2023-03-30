@@ -52,6 +52,13 @@ ignoreErrors = ["error-disable-taxonomy"]
   # 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
   # dateFormat = "2006-01-02"
 
+  # Allows configuration of navigation menu. By default, navigation menu is composed with the following items:
+  #   1. /home
+  #   2. ... front matter menu entries
+  #   3. /blog
+  # If you enable params.nav section, then you can sort the default menu by ascendant (weight > title > identifier) or descendant order.
+  # Optionally, you can select "strict" order, which allows you to specify the front-matter identifiers in the exact order they will show in 
+  # your blog. This mode only includes the "/home" menu entry be default.
   [params.nav]
     enabled = false
     order = "asc|desc|strict"
