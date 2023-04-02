@@ -26,13 +26,25 @@
   </ul>
   {{ if .Data.Singular }}
   {{else}}
-    <small>
-      <div>
-        {{ range .Site.Taxonomies.tags }}
-        <a href="{{ .Page.Permalink }}">#{{ .Page.Title }}</a>&nbsp;
+  <small>
+    <div>
+      {{ $category := .Page.Path }}
+      
+      {{ range .Site.Taxonomies.tags }}
+        {{ $showTag := false }}
+        {{ range .Pages }}
+        
+          {{ if in .Params.Categories $category }}
+            {{ $showTag = true }}
+          {{ end }}
         {{ end }}
-      </div>
-    </small>
-    {{ end }}
+
+        {{ if $showTag }}
+          <a href="{{ .Page.Permalink }}">#{{ .Page.Title }}</a>&nbsp;
+        {{ end }}
+      {{ end }}
+    </div>
+  </small>
+  {{ end }}
 </content>
 {{ end }}
