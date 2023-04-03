@@ -7,7 +7,12 @@
   </small>
   {{ end }}
   <ul class="blog-posts">
-    {{ range .Pages }}
+    {{ $pages := .Pages }}
+    {{ if .Site.Params.pagination.enabled }}
+      {{ $pages = (.Paginator .Site.Params.pagination.limit).Pages }}
+    {{ end }}
+
+    {{ range $pages }}
     <li>
       <span>
         <i>
@@ -26,6 +31,9 @@
   </ul>
   {{ if .Data.Singular }}
   {{else}}
+    {{ if .Site.Params.pagination.enabled }}
+      {{ template "partials/pagination.html" . }}
+    {{ end }}
   <small>
     <div>
       {{ $category := .Page.Path }}

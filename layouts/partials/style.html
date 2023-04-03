@@ -126,6 +126,20 @@
     color: #8b6fcb;
   }
 
+  ul.pagination {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  ul.pagination li {
+    list-style-type: none;
+  }
+
+  ul.pagination li.active {
+    padding-inline: 2%;
+  }
+
   @media (prefers-color-scheme: dark) {
     body {
       background-color: #333;
@@ -169,5 +183,4 @@
       color: #aaa;
     }
   }
-
 </style>
