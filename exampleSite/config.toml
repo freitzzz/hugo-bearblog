@@ -63,6 +63,9 @@ ignoreErrors = ["error-disable-taxonomy"]
     enabled = false
     order = "asc|desc|strict"
     menu = ["blog", "art", "videos"]
+  [params.pagination]
+    enabled = false
+    limit = 25
   [params.nolytics]
     enabled = false
     worker_url = "https://<worker.url>"
