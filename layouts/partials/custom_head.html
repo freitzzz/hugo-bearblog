@@ -2,6 +2,13 @@
   Simply place a custom_head.html into
   your local /layouts/partials-directory -->
 
+{{ if and .Site.Params.plausible.enabled hugo.IsProduction }}
+  <script defer data-domain="{{ .Site.Params.plausible.domain }}" 
+    data-api="{{ .Site.Params.plausible.proxy_url }}/event"
+    src="{{ .Site.Params.plausible.proxy_url }}/script.js">
+  </script>
+{{ end }}
+
 {{ if .Site.Params.theme.enabled }}
 <style>
   a {
