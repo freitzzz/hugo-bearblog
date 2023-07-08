@@ -34,6 +34,7 @@
     {{ if .Site.Params.pagination.enabled }}
       {{ template "partials/pagination.html" . }}
     {{ end }}
+  {{ if .Site.Params.pagination.show_tags }}
   <small>
     <div>
       {{ $category := .Page.Path }}
@@ -53,6 +54,7 @@
       {{ end }}
     </div>
   </small>
+  {{ end }}
   {{ end }}
 </content>
 {{ end }}
