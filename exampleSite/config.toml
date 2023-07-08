@@ -65,6 +65,7 @@ ignoreErrors = ["error-disable-taxonomy"]
     menu = ["blog", "art", "videos"]
   [params.pagination]
     enabled = false
+    show_tags = false
     limit = 25
   [params.nolytics]
     enabled = false
