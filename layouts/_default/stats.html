@@ -1,0 +1,56 @@
+{{ define "main" }}
+<content>
+  {{ if .Data.Singular }}
+  <h3 style="margin-bottom:0">Filtering for "{{ .Title }}"</h3>
+  <small>
+    <a href="{{ "/blog" | relURL }}">Remove filter</a>
+  </small>
+  {{ end }}
+
+  {{ $category := .Parent.Path }}
+  {{ $siteTagsSorted := sort .Site.Taxonomies.tags "Count" "desc" }}
+  {{ $scopeTagsSorted := slice }}
+  
+  {{ range $siteTagsSorted }}
+
+    {{ $showTag := false }}
+    {{ range .Pages }}
+      {{ if in .Params.Categories $category }}
+        {{ $showTag = true }}
+      {{ end }}
+    {{ end }}
+    {{ if and ($showTag) (ne $category .Page.Title) }}
+        {{ $scopeTagsSorted = $scopeTagsSorted | append ( dict "Title" .Page.Title "Permalink" .Page.Permalink "Count" .Count ) }}
+    {{ end }}
+  {{ end }}
+
+  <ul class="blog-posts">
+    <p>These are the top 25 keywords used in this section posts.</p>
+    <small>
+        <table>
+            <tr>
+                <th>Keyword</th>
+                <th>Count</th>
+            </tr>
+        
+            {{ range first 25 $scopeTagsSorted }}
+                <tr>
+                    <td><a href="{{ .Permalink }}">#{{ .Title }}</a>&nbsp;</td>
+                    <td>{{ .Count }}</td>
+                </tr>
+            {{ end }}
+        </table>
+    </small>
+
+    <p>And these are all the keywords used in the posts.</p>
+    <small>        
+        {{ range $scopeTagsSorted }}
+            <a href="{{ .Permalink }}">#{{ .Title }}</a>&nbsp;
+        {{ end }}
+    </small>
+  </ul>
+
+  <a href="{{ .Parent.Permalink }}">Click here to go back</a>
+
+</content>
+{{ end }}
