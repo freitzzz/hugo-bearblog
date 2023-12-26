@@ -55,6 +55,9 @@
     </div>
   </small>
   {{ end }}
+  {{ if .GetPage "stats" }}
+    <a href="{{ .Permalink }}/stats">Click here to see statistics or filter by keywords</a>
+  {{ end }}
   {{ end }}
 </content>
 {{ end }}
