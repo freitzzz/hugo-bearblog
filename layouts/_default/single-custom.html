@@ -1,0 +1,44 @@
+{{ define "main" }}
+{{ if eq .Type "blog" }}{{ if not .Params.menu }}
+<h1>{{ .Title }}</h1>
+<p>
+  <i>
+    <time datetime='{{ .Date.Format "2006-01-02" }}' pubdate>
+      {{ .Date.Format (default "02 Jan, 2006" .Site.Params.dateFormat) }}
+    </time>
+  </i>
+</p>
+{{ end }}{{ end }}
+<content>
+  <p>{{ .Description }}</p>
+  <hr>
+  {{ .Content }}
+  <hr>
+
+</content>
+
+{{ $links := .Params.links }}
+
+{{ if $links }}
+<div class="footer-links">
+    <p style="font-weight: bold;">Important links</p>
+    {{ if $links.homepage }}
+    <p>Homepage: <a href="{{ $links.homepage }}" target="_blank" title="Visit Homepage">{{ $links.homepage }}</a></p>
+    {{ end }}
+
+    {{ if $links.github }}
+    <p>GitHub: <a href="{{ $links.github }}" target="_blank" title="Browse source-code">{{ $links.github }}</a></p>
+    {{ end }}
+
+    {{ if $links.company }}
+    <p>Company: <a href="{{ $links.company }}" target="_blank" title="Visit company website">{{ $links.company }}</a></p>
+    {{ end }}
+</div>
+{{ end }}
+
+<p>
+  {{ range (.GetTerms "tags") }}
+  <a href="{{ .Permalink }}">#{{ .LinkTitle }}</a>
+  {{ end }}
+</p>
+{{ end }}
