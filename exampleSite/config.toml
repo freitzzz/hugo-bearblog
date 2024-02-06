@@ -67,6 +67,7 @@ ignoreErrors = ["error-disable-taxonomy"]
     enabled = false
     show_tags = false
     limit = 25
+    grid_limit = 8
   [params.nolytics]
     enabled = false
     worker_url = "https://<worker.url>"
