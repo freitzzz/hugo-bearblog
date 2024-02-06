@@ -29,6 +29,10 @@
     {{ if $links.github }}
     <p>GitHub: <a href="{{ $links.github }}" target="_blank" title="Browse source-code">{{ $links.github }}</a></p>
     {{ end }}
+
+    {{ if $links.company }}
+    <p>Company: <a href="{{ $links.company }}" target="_blank" title="Visit company website">{{ $links.company }}</a></p>
+    {{ end }}
 </div>
 {{ end }}
 
