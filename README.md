@@ -32,6 +32,10 @@ For more information, read the official [setup guide][hugo-setup-guide] of Hugo.
 
 Please check out the [config.toml](https://github.com/janraasch/hugo-bearblog/blob/master/exampleSite/config.toml) included in the [exampleSite](https://github.com/janraasch/hugo-bearblog/tree/master/exampleSite) of this theme.
 
+### Goat Counter support
+
+Want to use Goat Counter to gather analytics on site usage? You can do it in `config.toml`!
+
 ### Plausible support
 
 Want to use Plausible to gather analytics on site usage? You can do it in `config.toml`!
