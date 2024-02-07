@@ -9,6 +9,13 @@
   </script>
 {{ end }}
 
+{{ if and .Site.Params.goat_counter.enabled hugo.IsProduction }}
+  <script
+    data-goat_counter="{{ .Site.Params.goat_counter.proxy_url }}/count"
+    async src="{{ .Site.Params.goat_counter.proxy_url }}/count.js">
+  </script>
+{{ end }}
+
 {{ if .Site.Params.theme.enabled }}
 <style>
   a {

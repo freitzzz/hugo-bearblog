@@ -75,6 +75,9 @@ ignoreErrors = ["error-disable-taxonomy"]
     enabled = false
     domain = "<your.domain>"
     proxy_url = "<proxy.url>"
+  [params.goat_counter]
+    enabled = false
+    proxy_url = "<proxy.url>"
   [params.theme]
     enabled = false
     link_color = "#FF0000"
