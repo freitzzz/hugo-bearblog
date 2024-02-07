@@ -6,6 +6,3 @@
 {{ if and .Site.Params.nolytics.enabled hugo.IsProduction }}
 <img src="{{ .Site.Params.nolytics.worker_url }}?path={{ .RelPermalink }}&name={{ .Title }}" alt="">
 {{ end }}
-{{ if and .Site.Params.goat_counter.enabled hugo.IsProduction }}
-<img src="{{ .Site.Params.goat_counter.proxy_url }}/count?p={{ .RelPermalink }}" alt="">
-{{ end }}
