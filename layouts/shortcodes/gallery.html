@@ -1,0 +1,138 @@
+<!-- 
+    CSS only image gallery adopted from https://css-tricks.com/css-only-carousel/
+    Short code adopted from https://discourse.gohugo.io/t/shortcode-parameter-with-multiple-values/40537
+    
+    Short code should be declared as follows:
+    
+    < gallery >
+        - url (required)
+        alt (optional)
+        caption (optional)
+        - url (required)
+        alt (optional)
+        caption (optional)
+        ...
+    < /gallery >
+-->
+{{- $items := split .Inner "\n- " -}}
+
+<section class="carousel" aria-label="Gallery">
+    <ol class="carousel-viewport">
+        {{ range $items -}}
+        {{- $fields := split . "\n " -}}
+        {{- $src := index $fields 0 }}
+        {{- $alt := index $fields 1 }}
+        {{- $cap := index $fields 2 }}
+        {{ with $src -}}
+        <li id="carousel-slide" tabindex="0" class="carousel-slide">
+            <figure class="row flex-center"
+                style="display: block; margin-left: auto; margin-right: auto; overflow: hidden;">
+                <img src="{{ . }}" {{ with $alt }}alt="{{ . }}" {{ end }}
+                    style="display: block; margin-left: auto; margin-right: auto; max-width: 100%;">
+                {{ with $cap -}}
+                <figcaption style="text-align: center;">
+                    <p>{{ . }}</p>
+                </figcaption>
+                {{ end -}}
+            </figure>
+        </li>
+        {{ end -}}
+        {{ end -}}
+    </ol>
+</section>
+
+<style>
+    ol,
+    li {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .carousel {
+        position: relative;
+        /*padding-top: 75%;*/
+        filter: drop-shadow(0 0 10px #0003);
+        perspective: 100px;
+    }
+
+    .carousel-viewport {
+        /*position: absolute;*/
+        position: relative;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        display: flex;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        scroll-behavior: smooth;
+        scroll-snap-type: x mandatory;
+    }
+
+    .carousel-slide {
+        position: relative;
+        flex: 0 0 100%;
+        width: 100%;
+    }
+
+    .carousel-slide:before {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate3d(-50%, -40%, 70px);
+        color: #fff;
+        font-size: 2em;
+    }
+
+
+    .carousel-navigation {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        text-align: center;
+    }
+
+    .carousel-navigation-list,
+    .carousel-navigation-item {
+        display: inline-block;
+    }
+
+    .carousel-navigation-button {
+        display: inline-block;
+        width: 1.5rem;
+        height: 1.5rem;
+        background-color: #333;
+        background-clip: content-box;
+        border: 0.25rem solid transparent;
+        border-radius: 50%;
+        font-size: 0;
+        transition: transform 0.1s;
+    }
+
+    .carousel::before,
+    .carousel::after,
+    .carousel-prev,
+    .carousel-next {
+        position: absolute;
+        top: 0;
+        margin-top: 37.5%;
+        width: 4rem;
+        height: 4rem;
+        transform: translateY(-50%);
+        border-radius: 50%;
+        font-size: 0;
+        outline: 0;
+    }
+
+    .carousel::before,
+    .carousel-prev {
+        left: -1rem;
+    }
+
+    .carousel::after,
+    .carousel-next {
+        right: -1rem;
+    }
+</style>
