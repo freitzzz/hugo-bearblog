@@ -42,6 +42,18 @@
 </section>
 
 <style>
+    @media all and (max-width: 840px) {
+        li>figure>img {
+            max-width: 28ch;
+        }
+    }
+
+    @media not all and (max-width: 840px) {
+        li>figure>img {
+            max-width: 34ch;
+        }
+    }
+
     ol,
     li {
         list-style: none;
