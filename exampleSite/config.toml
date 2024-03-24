@@ -52,6 +52,9 @@ ignoreErrors = ["error-disable-taxonomy"]
   # 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
   # dateFormat = "2006-01-02"
 
+  # A list of SEO keywords that will help Search Engines deliver your blog to new readers.
+  keywords = []
+
   # Allows configuration of navigation menu. By default, navigation menu is composed with the following items:
   #   1. /home
   #   2. ... front matter menu entries
