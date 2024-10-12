@@ -15,6 +15,7 @@
     < /gallery >
 -->
 {{- $items := split .Inner "\n- " -}}
+{{- $landscape := eq (.Get "landscape") true }}
 
 <section class="carousel" aria-label="Gallery">
     <ol class="carousel-viewport">
@@ -88,6 +89,14 @@
         width: 100%;
     }
 
+    .carousel-slide > figure {
+        padding-left: 4px;
+    }
+
+    .carousel-slide:first-child {
+        padding-left: 0px;
+    }
+
     .carousel-slide:before {
         position: absolute;
         top: 50%;
@@ -147,4 +156,10 @@
     .carousel-next {
         right: -1rem;
     }
+
+    {{ if $landscape }}
+    .carousel-slide > figure > img {
+        max-width: 100%;
+    }
+    {{ end }}
 </style>
